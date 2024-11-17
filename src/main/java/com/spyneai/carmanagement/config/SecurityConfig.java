@@ -44,6 +44,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/auth/**").permitAll() // Allow unauthenticated access to auth endpoints
                         .requestMatchers(WHITE_LIST_URL).permitAll()
+                        .requestMatchers("/login.html", "/static/**").permitAll()
                         .anyRequest().authenticated()) // Protect all other endpoints
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class) // JWT filter
                 .build();
