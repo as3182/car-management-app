@@ -57,7 +57,8 @@ public class SecurityConfig {
                 "http://127.0.0.1:5500",
                 "http://localhost:63342",
                 "http://localhost:3000",
-                "https://af5c-2401-4900-1c5a-ed51-3867-544f-c9af-535a.ngrok-free.app"
+                "https://af5c-2401-4900-1c5a-ed51-3867-544f-c9af-535a.ngrok-free.app",
+                "https://car-management-app-ayzd.onrender.com"
         ));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
