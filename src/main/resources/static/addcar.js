@@ -38,7 +38,7 @@ function addCar() {
         return;
     }
 
-    fetch("http://localhost:8080/user/addcar", {
+    fetch("https://car-management-app-ayzd.onrender.com/user/addcar", {
         method: "POST",
         headers: {
             "Authorization": `Bearer ${token}`

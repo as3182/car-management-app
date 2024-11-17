@@ -21,7 +21,7 @@ function fetchUserData() {
     const token = localStorage.getItem('jwtToken');
     if (!token) return redirectToLogin();
 
-    fetch('http://localhost:8080/user/details', {
+    fetch('https://car-management-app-ayzd.onrender.com/user/details', {
         headers: { 'Authorization': `Bearer ${token}` },
     })
         .then(res => res.json())
@@ -43,7 +43,7 @@ function fetchCarData() {
     const token = localStorage.getItem('jwtToken');
     if (!token) return redirectToLogin();
 
-    fetch('http://localhost:8080/user/cars', {
+    fetch('https://car-management-app-ayzd.onrender.com/user/cars', {
         headers: { 'Authorization': `Bearer ${token}` },
     })
         .then(res => res.json())

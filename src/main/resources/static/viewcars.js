@@ -11,7 +11,7 @@ function fetchCars() {
         return;
     }
 
-    fetch('http://localhost:8080/user/cars', {
+    fetch('https://car-management-app-ayzd.onrender.com/user/cars', {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`
@@ -66,7 +66,7 @@ function deleteCar(carId) {
     }
 
     // Make the DELETE request with the carId as a query parameter
-    fetch(`http://localhost:8080/user/cars/delete?carId=${carId}`, {
+    fetch(`https://car-management-app-ayzd.onrender.com/user/cars/delete?carId=${carId}`, {
         method: 'DELETE',
         headers: {
             'Authorization': `Bearer ${token}`

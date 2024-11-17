@@ -37,7 +37,7 @@ document.getElementById('updateCarForm').addEventListener('submit', async functi
 
     try {
         // Make the PUT request to the backend
-        const response = await fetch(`http://localhost:8080/user/updatecar?id=${id}`, {
+        const response = await fetch(`https://car-management-app-ayzd.onrender.com/user/updatecar?id=${id}`, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}` // JWT token

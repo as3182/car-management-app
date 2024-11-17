@@ -11,7 +11,7 @@ function fetchAllCars() {
     }
 
     // Fetch cars using the API
-    fetch(`http://localhost:8080/user/allcars?page=0&size=10`, {
+    fetch(`https://car-management-app-ayzd.onrender.com/user/allcars?page=0&size=10`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`
@@ -46,7 +46,7 @@ function fetchCarsByTag(tag) {
 
     showLoading(); // Show the loading spinner for search
 
-    fetch(`http://localhost:8080/user/search?tag=${encodeURIComponent(tag)}`, {
+    fetch(`https://car-management-app-ayzd.onrender.com/user/search?tag=${encodeURIComponent(tag)}`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`
