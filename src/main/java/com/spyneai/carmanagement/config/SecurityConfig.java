@@ -20,10 +20,22 @@ import java.util.List;
 @Configuration
 public class SecurityConfig {
 
-    private static final String[] WHITE_LIST_URL = { "/api/v1/auth/**", "/v2/api-docs", "/v3/api-docs",
+    private static final String[] WHITE_LIST_URL1 = { "/api/v1/auth/**", "/v2/api-docs", "/v3/api-docs",
             "/v3/api-docs/**", "/swagger-resources", "/swagger-resources/**", "/configuration/ui",
             "/configuration/security", "/swagger-ui/**", "/webjars/**", "/swagger-ui.html", "/api/auth/**",
             "/api/test/**", "/authenticate" };
+
+    private static final String[] WHITE_LIST_URL2 = {
+            "/addcar.html", "/addcar.css", "/addcar.js",
+            "/allcars.html", "/allcars.css", "/allcars.js",
+            "/dashboard.html", "/defaultimg.png",
+            "/login.html", "/register.html",
+            "/script.js", "/styles.css",
+            "/updatecar.html", "/updatecar.css", "/updatecar.js",
+            "/viewcar.html", "/viewcar.css", "/viewcar.js",
+            "/viewcars.html", "/viewcars.css", "/viewcars.js"
+    };
+
 
     @Autowired
     private CustomUserDetailService customUserDetailService;
@@ -44,8 +56,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/auth/**").permitAll() // Allow unauthenticated access to auth endpoints
                         .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
-                        .requestMatchers(WHITE_LIST_URL).permitAll()
-                        .requestMatchers("/login.html", "/addcar.html","/allcars.html","/register.html","/dashboard.html","/updatecar.html","/viewcar.html","/viewcars.html").permitAll()
+                        .requestMatchers(WHITE_LIST_URL1).permitAll()
+                        .requestMatchers(WHITE_LIST_URL2).permitAll()
                         .anyRequest().authenticated()) // Protect all other endpoints
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class) // JWT filter
                 .build();
