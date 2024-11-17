@@ -43,8 +43,9 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Configure CORS
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/auth/**").permitAll() // Allow unauthenticated access to auth endpoints
+                        .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                         .requestMatchers(WHITE_LIST_URL).permitAll()
-                        .requestMatchers("/login.html", "/static/**").permitAll()
+                        .requestMatchers("/login.html", "/addcar.html","/allcars.html","/register.html","/dashboard.html","/updatecar.html","/viewcar.html","/viewcars.html").permitAll()
                         .anyRequest().authenticated()) // Protect all other endpoints
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class) // JWT filter
                 .build();
