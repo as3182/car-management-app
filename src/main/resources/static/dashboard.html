@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Car Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <h2>Car Management</h2>
+    <ul>
+        <li><a href="viewcars.html" id="viewCarsBtn">View Cars</a></li>
+        <li><a href="addcar.html" id="addCarBtn">Add Car</a></li>
+        <li><a href="allcars.html" id="allCarBtn">All Cars / Car Search</a></li>
+        <li><button id="logoutBtn" class="logout-btn">Logout</button></li>
+    </ul>
+</div>
+
+<!-- Toggle Button -->
+<button id="toggleBtn" class="toggle-btn">
+    ☰
+</button>
+
+<div id="loading" class="loading-spinner">
+    <div class="spinner"></div>
+</div>
+
+
+<!-- Main content -->
+<div class="main-content">
+    <header>
+        <h1>Hi, <span id="userName">User</span></h1>
+    </header>
+
+    <!-- User Information Section -->
+    <div class="user-info">
+        <div class="info-card glass">
+            <i class="fa fa-user-circle"></i>
+            <h3>Username</h3>
+            <p id="userUsername">Loading...</p>
+        </div>
+        <div class="info-card glass">
+            <i class="fa fa-id-card"></i>
+            <h3>Full Name</h3>
+            <p id="userNameInfo">Loading...</p>
+        </div>
+        <div class="info-card glass">
+            <i class="fa fa-car"></i>
+            <h3>Total Cars</h3>
+            <p id="totalCars">0</p>
+        </div>
+    </div>
+
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

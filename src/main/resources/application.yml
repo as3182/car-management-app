@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: CAR-MANAGEMENT
+  datasource:
+    url: jdbc:postgresql://dpg-csrh8368ii6s73b66qh0-a.oregon-postgres.render.com:5432/carmgmt?sslmode=require
+    username: root
+    password: QUJMez6gDCHhKTAy20RhTxKAiYuoR0HE
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+
+#logging:
+#  level:
+#    org.springframework: DEBUG
