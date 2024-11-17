@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Car</title>
+    <link rel="stylesheet" href="addcar.css">
+</head>
+<body>
+
+<div id="loading" class="loading-spinner">
+    <div class="spinner"></div>
+</div>
+
+<div class="container">
+    <h1>Add a New Car</h1>
+    <form id="addCarForm">
+        <div class="form-group">
+            <label for="title">Car Title:</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="tags">Tags (comma-separated):</label>
+            <input type="text" id="tags" name="tags" required>
+        </div>
+        <div class="form-group">
+            <label for="images">Upload Images:</label>
+            <input type="file" id="images" name="images" multiple required>
+        </div>
+        <button type="submit">Add Car</button>
+    </form>
+    <p id="responseMessage"></p>
+</div>
+<script src="addcar.js"></script>
+</body>
+</html>

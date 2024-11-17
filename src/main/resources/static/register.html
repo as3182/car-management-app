@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f4f4f4;
+    }
+
+    .form-container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    .input-group {
+        margin-bottom: 15px;
+        text-align: left;
+    }
+
+    label {
+        font-size: 14px;
+        color: #555;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    #error-message {
+        color: red;
+        font-size: 14px;
+        margin-top: 10px;
+        text-align: left;
+    }
+
+    .success-message {
+        color: green;
+        font-size: 14px;
+        margin-top: 10px;
+        text-align: left;
+    }
+  </style>
+</head>
+<body>
+<div class="form-container">
+  <h2>Register</h2>
+  <form id="registerForm">
+    <div class="input-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" required>
+    </div>
+    <div class="input-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" required>
+    </div>
+    <div class="input-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" required>
+    </div>
+    <div class="input-group">
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" required>
+    </div>
+    <button type="submit">Register</button>
+  </form>
+  <div id="error-message"></div>
+  <div id="success-message" class="success-message"></div>
+  <p>Already have an account? <a href="login.html">Login here</a></p>
+</div>
+
+<script>
+  document.getElementById("registerForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const username = document.getElementById("username").value;
+      const name = document.getElementById("name").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+
+      // Clear previous messages
+      document.getElementById("error-message").innerText = '';
+      document.getElementById("success-message").innerText = '';
+
+      // Form validation: Ensure passwords match
+      if (password !== confirmPassword) {
+          document.getElementById("error-message").innerText = "Passwords do not match!";
+          return;
+      }
+
+      // Prepare the data for registration
+      const registerData = { username, name, password };
+
+      // Send POST request to backend for registration
+      fetch("http://localhost:8080/auth/register", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify(registerData),
+      })
+      .then(response => {
+          // Check if the response is JSON
+          const contentType = response.headers.get("content-type");
+          if (contentType && contentType.includes("application/json")) {
+              return response.json();  // Parse JSON response
+          } else {
+              return response.text();  // Handle plain text error messages
+          }
+      })
+      .then(data => {
+          if (typeof data === "string") {
+              // If response is plain text (e.g., "User with this username already exists")
+              document.getElementById("error-message").innerText = data;
+          } else if (data.message) {
+              // If response is a JSON object with a "message" field
+              document.getElementById("error-message").innerText = data.message;
+          } else {
+              // Success: Show success message and redirect
+              document.getElementById("success-message").innerText = "Registration successful! Redirecting to login...";
+              setTimeout(() => {
+                  window.location.href = "login.html"; // Redirect to login page after success
+              }, 2000); // 2 seconds delay
+          }
+      })
+      .catch(error => {
+          // Handle any unexpected errors
+          document.getElementById("error-message").innerText = "Failed to register: " + error.message;
+      });
+  });
+</script>
+</body>
+</html>

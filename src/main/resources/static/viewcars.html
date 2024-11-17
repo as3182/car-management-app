@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Cars</title>
+    <link rel="stylesheet" href="viewcars.css">
+</head>
+<body>
+<div class="sidebar">
+    <h2>Car Management</h2>
+    <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="addcar.html">Add Car</a></li>
+        <li><a href="viewcars.html" class="active">View Cars</a></li>
+    </ul>
+</div>
+
+<div id="loading" class="loading-spinner">
+    <div class="spinner"></div>
+</div>
+
+
+<div class="main-content">
+    <h1>Your Cars</h1>
+    <div id="carContainer" class="car-container">
+        <!-- Cars will be dynamically loaded here -->
+    </div>
+</div>
+
+<script src="viewcars.js"></script>
+</body>
+</html>
