@@ -23,7 +23,7 @@ function fetchCarDetails() {
     }
 
     // Make a GET request with the car ID as a query parameter
-    fetch(`http://localhost:8080/user/viewcar?id=${carId}`, {
+    fetch(`https://car-management-app-ayzd.onrender.com/user/viewcar?id=${carId}`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`
